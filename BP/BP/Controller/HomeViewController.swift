@@ -80,18 +80,18 @@ class HomeViewController: UIViewController {
             }
         }//end func
     
-//    @IBAction func handleLogOut(_ sender: Any) {
-//        
-//        do {
-//            try Auth.auth().signOut()
-//            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LandingNavigationController") as? UINavigationController {
-//                vc.modalPresentationStyle = .fullScreen
-//                self.present(vc, animated: true, completion: nil)
-//            }
-//        } catch  {
-//            print("ERROR in signout",error.localizedDescription)
-//        }
-//    }
+    @IBAction func handleLogOut(_ sender: Any) {
+        
+        do {
+            try Auth.auth().signOut()
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LandingNavigationController") as? UINavigationController {
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true, completion: nil)
+            }
+        } catch  {
+            print("ERROR in signout",error.localizedDescription)
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "toPostVC" {
@@ -132,7 +132,7 @@ extension HomeViewController: UITableViewDataSource {
 }
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return self.view.frame.height/6
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! NewPieceCell

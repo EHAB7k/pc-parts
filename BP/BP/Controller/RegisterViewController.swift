@@ -13,7 +13,7 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var userImageView: UIImageView!{
         didSet {
-            userImageView.layer.borderColor = UIColor.systemGreen.cgColor
+            userImageView.layer.borderColor = UIColor.systemGray.cgColor
             userImageView.layer.borderWidth = 3.0
             userImageView.layer.cornerRadius = userImageView.bounds.height / 2
             userImageView.layer.masksToBounds = true
@@ -75,7 +75,7 @@ class RegisterViewController: UIViewController {
                                     if let error = error {
                                         print("Registration Database error",error.localizedDescription)
                                     }else {
-                                        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationController") as? UINavigationController {
+                                        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationController") as? UITabBarController {
                                             vc.modalPresentationStyle = .fullScreen
                                             Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
                                             self.present(vc, animated: true, completion: nil)

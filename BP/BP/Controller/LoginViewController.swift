@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let _ = authResult {
-                    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationController") as? UINavigationController {
+                    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationController") as? UITabBarController {
                         vc.modalPresentationStyle = .fullScreen
                         Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
                         self.present(vc, animated: true, completion: nil)
