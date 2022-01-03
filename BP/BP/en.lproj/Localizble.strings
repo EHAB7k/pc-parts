@@ -1,0 +1,23 @@
+/* 
+  Localizble.strings
+  BP
+
+  Created by Ehab Hakami on 29/05/1443 AH.
+  
+*/
+"Name" = "Name";
+"Email" = "Email";
+"Password" = "Password";
+"Retype the password" = "Retype the password";
+"Login" = "Login";
+"Sign In" = "Sign In";
+"Hi there! Nice to see you again" = "Hi there! Nice to see you again";
+"Register" = "Register";
+"Have an accunt?" = "Have an accunt?";
+"The piece name" = "The piece name";
+"The price of the piece" =  "The price of the piece";
+"Phone number" = "Phone number";
+"Product information" = "Product information";
+"Add" = "Add";
+"Update" = "Update";
+"ChangeLanguagh" = "ChangeLanguagh";

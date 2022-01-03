@@ -22,6 +22,8 @@
 		FE0498342775F0A400A7CB6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0498332775F0A400A7CB6E /* HomeViewController.swift */; };
 		FE0498362775F18900A7CB6E /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0498352775F18900A7CB6E /* LandingViewController.swift */; };
 		FE0498382775FA1300A7CB6E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0498372775FA1300A7CB6E /* RegisterViewController.swift */; };
+		FE11D7EF2781998E0016D5ED /* Localizble.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11D7EE2781998E0016D5ED /* Localizble.swift */; };
+		FE11D7F527819E3C0016D5ED /* Localizble.strings in Resources */ = {isa = PBXBuildFile; fileRef = FE11D7F727819E3C0016D5ED /* Localizble.strings */; };
 		FE5F8F8E277A4ADC0091DB5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE5F8F8D277A4ADC0091DB5E /* Main.storyboard */; };
 		FEA395E42775FDF8002BF4FC /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA395E32775FDF8002BF4FC /* ImageView.swift */; };
 		FEA395E72775FE6E002BF4FC /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA395E62775FE6E002BF4FC /* Activity.swift */; };
@@ -67,6 +69,11 @@
 		FE0498332775F0A400A7CB6E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FE0498352775F18900A7CB6E /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		FE0498372775FA1300A7CB6E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		FE11D7EE2781998E0016D5ED /* Localizble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizble.swift; sourceTree = "<group>"; };
+		FE11D7F127819CF60016D5ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		FE11D7F227819DFB0016D5ED /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		FE11D7F627819E3C0016D5ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizble.strings; sourceTree = "<group>"; };
+		FE11D7F827819E410016D5ED /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizble.strings; sourceTree = "<group>"; };
 		FE5F8F8D277A4ADC0091DB5E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FEA395E32775FDF8002BF4FC /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		FEA395E62775FE6E002BF4FC /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
@@ -135,8 +142,9 @@
 				FEA395E82775FEA7002BF4FC /* Model */,
 				FEA395E92775FEFC002BF4FC /* View */,
 				FE04982E2775F00600A7CB6E /* Controller */,
-				FE0498002775E97000A7CB6E /* LaunchScreen.storyboard */,
+				FE11D7F727819E3C0016D5ED /* Localizble.strings */,
 				FE0497FE2775E97000A7CB6E /* Assets.xcassets */,
+				FE0498002775E97000A7CB6E /* LaunchScreen.storyboard */,
 				FE0498032775E97000A7CB6E /* Info.plist */,
 				FE0498252775E9FE00A7CB6E /* GoogleService-Info.plist */,
 			);
@@ -179,6 +187,7 @@
 			children = (
 				FEA395E32775FDF8002BF4FC /* ImageView.swift */,
 				FEA395E62775FE6E002BF4FC /* Activity.swift */,
+				FE11D7EE2781998E0016D5ED /* Localizble.swift */,
 			);
 			path = Utill;
 			sourceTree = "<group>";
@@ -292,6 +301,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = FE0497E92775E96C00A7CB6E;
 			packageReferences = (
@@ -317,6 +327,7 @@
 				FE0498022775E97000A7CB6E /* LaunchScreen.storyboard in Resources */,
 				FE0497FF2775E97000A7CB6E /* Assets.xcassets in Resources */,
 				FE5F8F8E277A4ADC0091DB5E /* Main.storyboard in Resources */,
+				FE11D7F527819E3C0016D5ED /* Localizble.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +365,7 @@
 				FE0498342775F0A400A7CB6E /* HomeViewController.swift in Sources */,
 				FEA395ED277600ED002BF4FC /* User.swift in Sources */,
 				FEA395EB27760062002BF4FC /* NewPiece.swift in Sources */,
+				FE11D7EF2781998E0016D5ED /* Localizble.swift in Sources */,
 				FEA395F327760A11002BF4FC /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,8 +407,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				FE0498012775E97000A7CB6E /* Base */,
+				FE11D7F127819CF60016D5ED /* en */,
+				FE11D7F227819DFB0016D5ED /* ar */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FE11D7F727819E3C0016D5ED /* Localizble.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE11D7F627819E3C0016D5ED /* en */,
+				FE11D7F827819E410016D5ED /* ar */,
+			);
+			name = Localizble.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -406,6 +429,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -467,6 +491,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

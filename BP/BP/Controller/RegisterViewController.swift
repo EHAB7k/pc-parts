@@ -8,8 +8,62 @@
 import UIKit
 import Firebase
 class RegisterViewController: UIViewController {
+    
+    @IBOutlet weak var RegisterLabel: UILabel!{
+        didSet{
+            RegisterLabel.text = "Register".localized
+        }
+    }
+    
+    @IBOutlet weak var nameLabel: UILabel!{
+        didSet{
+            nameLabel.text = "Name".localized
+        }
+    }
+    
+    @IBOutlet weak var EmailLabel: UILabel!{
+        didSet{
+            EmailLabel.text = "Email".localized
+        }
+    }
+    
+    @IBOutlet weak var passwordLabel: UILabel!{
+        didSet{
+            passwordLabel.text = "Password".localized
+        }
+    }
+    
+    @IBOutlet weak var rePasswordLabel: UILabel!{
+        didSet{
+            rePasswordLabel.text = "Retype the password".localized
+        }
+    }
+    
+    
+    @IBOutlet weak var registerButton: UIButton!{
+        didSet{
+            registerButton.setTitle("Register".localized, for: .normal)
+        }
+    }
+    
+    @IBOutlet weak var haveAnAccuntQutions: UILabel!{
+        didSet{
+            haveAnAccuntQutions.text = "Have an accunt?".localized
+        }
+    }
+    
+    @IBOutlet weak var signInButton: UIButton!{
+        didSet{
+            signInButton.setTitle("Sign In".localized, for: .normal)
+        }
+    }
     let imagePickerController = UIImagePickerController()
     var activityIndicator = UIActivityIndicatorView()
+    
+    
+    
+    
+    
     
     @IBOutlet weak var userImageView: UIImageView!{
         didSet {

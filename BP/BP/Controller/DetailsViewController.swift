@@ -12,15 +12,31 @@ class DetailsViewController: UIViewController {
     var selectedNewPiece:NewPeice?
     var selectedNewPieceImage:UIImage?
     
-    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!{
+        didSet{
+            userNameLabel.text = "User name".localized
+        }
+    }
     
-    @IBOutlet weak var phoneNumber: UILabel!
+    @IBOutlet weak var phoneNumber: UILabel!{
+        didSet{
+            phoneNumber.text = "Phone number".localized
+        }
+    }
     
     @IBOutlet weak var pieceImageView: UIImageView!
     
-    @IBOutlet weak var thePieceName: UILabel!
+    @IBOutlet weak var thePieceName: UILabel!{
+        didSet{
+            thePieceName.text = "The piece name".localized
+        }
+    }
     
-    @IBOutlet weak var thePriceOfThePieceLabel: UILabel!
+    @IBOutlet weak var thePriceOfThePieceLabel: UILabel!{
+        didSet{
+            thePriceOfThePieceLabel.text = "The price of the piece".localized
+        }
+    }
     
     @IBOutlet weak var ProductInformationTextView: UITextView!
     
@@ -38,6 +54,10 @@ class DetailsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+        ProductInformationTextView.layer.borderColor = UIColor.systemGray.cgColor
+        ProductInformationTextView.layer.borderWidth = 1.0
+        ProductInformationTextView.layer.masksToBounds = true
+        ProductInformationTextView.layer.cornerRadius = 7
     
 }
     /*

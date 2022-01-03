@@ -29,6 +29,9 @@ class NewPieceCell: UITableViewCell {
         }
     }
     
+    @IBOutlet weak var UserPieceImage: UIImageView!
+    @IBOutlet weak var userPieceTitleLabel: UILabel!
+    @IBOutlet weak var userPiecePriceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,9 +52,19 @@ class NewPieceCell: UITableViewCell {
         return self
     }
     
+    func userConfigure(with addPiece:NewPeice) -> UITableViewCell {
+        userPieceTitleLabel.text = addPiece.title
+        userPiecePriceLabel.text = addPiece.description
+        UserPieceImage.loadImageUsingCache(with: addPiece.imageUrl)
+       // userNameLabel.text = addPiece.user.name
+        //userImageView.loadImageUsingCache(with: addPiece.user.imageUrl)
+        return self
+    }
+    
     override func prepareForReuse() {
         //userImageView.image = nil
         newPieceImageView.image = nil
+        UserPieceImage.image = nil
     }
 
 }

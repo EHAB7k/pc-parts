@@ -56,7 +56,7 @@ class HomeViewController: UIViewController {
                                 }
                             }
                         }
-                        case .modified:
+                    case .modified:
                         let postId = diff.document.documentID
                         if let currentPost = self.newPieceArr.first(where: {$0.id == postId}),
                            let updateIndex = self.newPieceArr.firstIndex(where: {$0.id == postId}){
@@ -74,11 +74,11 @@ class HomeViewController: UIViewController {
                                 self.pieceTableView.reloadData()
                             }
                         }
-                        }
                     }
                 }
             }
-        }//end func
+        }
+    }//end func
     
     @IBAction func handleLogOut(_ sender: Any) {
         

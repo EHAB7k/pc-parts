@@ -8,6 +8,32 @@
 import UIKit
 import Firebase
 class AddNewPieceViewController: UIViewController {
+    
+    @IBOutlet weak var thePartNameLabel: UILabel!{
+        didSet{
+            thePartNameLabel.text = "The piece name".localized
+        }
+    }
+    
+    @IBOutlet weak var thePriceOfThePieceLabel: UILabel!{
+        didSet{
+            thePriceOfThePieceLabel.text = "The price of the piece".localized
+        }
+    }
+    
+    @IBOutlet weak var PhoneNumberLabel: UILabel!{
+        didSet{
+            PhoneNumberLabel.text = "Phone number".localized
+        }
+    }
+    
+    @IBOutlet weak var ProductInformationLabel: UILabel!{
+        didSet{
+            ProductInformationLabel.text = "Product information".localized
+        }
+    }
+    
+    
     var selectedNewPiece:NewPeice?
     var selectedNewPieceImage:UIImage?
     
@@ -15,6 +41,8 @@ class AddNewPieceViewController: UIViewController {
     
     
     @IBOutlet weak var actionButton: UIButton!
+        
+    
     
     @IBOutlet weak var addNewPieceImageView: UIImageView!{
         didSet {
@@ -25,7 +53,7 @@ class AddNewPieceViewController: UIViewController {
         
     }
     
-    @IBOutlet weak var DeleteButton: UIButton!
+
 
     
     
@@ -39,6 +67,7 @@ class AddNewPieceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
         
@@ -49,42 +78,27 @@ class AddNewPieceViewController: UIViewController {
             productInformation.text = selectedNewPiece.productInformation
             phoneNumber.text = selectedNewPiece.phoneNumber
             addNewPieceImageView.image = selectedImage
-            actionButton.setTitle("Update Promo", for: .normal)
+            actionButton.setTitle("Update".localized, for: .normal)
             let deleteBarButton = UIBarButtonItem(image: UIImage(systemName: "trash.fill"), style: .plain, target: self, action: #selector(handleDelete))
             self.navigationItem.rightBarButtonItem = deleteBarButton
         }else {
-            actionButton.setTitle("Add Promo", for: .normal)
+            actionButton.setTitle("Add".localized, for: .normal)
 //            DeleteButton.isHidden = true
             self.navigationItem.rightBarButtonItem = nil
             
         }
+        
+
+        
+            
+        productInformation.layer.borderColor = UIColor.systemGray.cgColor
+        productInformation.layer.borderWidth = 1.0
+        productInformation.layer.masksToBounds = true
+        productInformation.layer.cornerRadius = 7
+        
     }
     
-//    @IBAction func delateButton(_ sender: Any) {
-//        
-//            let ref = Firestore.firestore().collection("addPiece")
-//            if let selectedNewPiece = selectedNewPiece {
-//                Activity.showIndicator(parentView: self.view, childView: activityIndicator)
-//                ref.document(selectedNewPiece.id).delete { error in
-//                    if let error = error {
-//                        print("Error in db delete",error)
-//                    }else {
-//                        // Create a reference to the file to delete
-//                        let storageRef = Storage.storage().reference(withPath: "addPiece/\(selectedNewPiece.user.id)/\(selectedNewPiece.id)")
-//                        // Delete the file
-//                        storageRef.delete { error in
-//                            if let error = error {
-//                                print("Error in storage delete",error)
-//                            } else {
-//                                self.activityIndicator.stopAnimating()
-//                                self.navigationController?.popViewController(animated: true)
-//                            }
-//                        }
-//                        
-//                    }
-//                }
-//            }
-//        }
+
         
     
     @objc func handleDelete (_ sender: UIBarButtonItem) {
