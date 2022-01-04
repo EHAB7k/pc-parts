@@ -7,14 +7,15 @@
 
 import UIKit
 import Firebase
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController,UISearchBarDelegate  {
     var newPieceArr = [NewPeice]()
     var selectedNewPieceModel:NewPeice?
     var selectedNewPieceImage:UIImage?
     
     
     @IBOutlet weak var pieceTableView: UITableView!
-    
+    @IBOutlet weak var searchBar: UISearchBar!
+    var filteredData:[NewPeice]!
         
 
     
@@ -22,23 +23,82 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         pieceTableView.delegate = self
         pieceTableView.dataSource = self
+        
+        searchBar.delegate = self
        
         
-        getPosts()
-        // Do any additional setup after loading the view.
+        
+        filteredData = newPieceArr
+        getPiece()
     }
-    func getPosts() {
+//    func getPosts() {
+//        let ref = Firestore.firestore()
+//        ref.collection("addPiece").order(by: "createdAt",descending: true).addSnapshotListener { snapshot, error in
+//            if let error = error {
+//                print("DB ERROR Posts",error.localizedDescription)
+//            }
+//            if let snapshot = snapshot {
+//                snapshot.documentChanges.forEach { diff in
+//                    let post = diff.document.data()
+//                    switch diff.type {
+//                    case .added :
+//                        if let userId = post["userId"] as? String {
+//                            ref.collection("users").document(userId).getDocument { userSnapshot, error in
+//                                if let error = error {
+//                                    print("ERROR user Data",error.localizedDescription)
+//
+//                                }
+//                                if let userSnapshot = userSnapshot,
+//                                   let userData = userSnapshot.data(){
+//                                    let user = User(dict:userData)
+//                                    let post = NewPeice(dict:post,id:diff.document.documentID,user:user)
+//                                    self.newPieceArr.insert(post, at: 0)
+//                                    DispatchQueue.main.async {
+//                                        self.pieceTableView.reloadData()
+//                                    }
+//
+//                                }
+//                            }
+//                        }
+//                    case .modified:
+//                        let postId = diff.document.documentID
+//                        if let currentPost = self.newPieceArr.first(where: {$0.id == postId}),
+//                           let updateIndex = self.newPieceArr.firstIndex(where: {$0.id == postId}){
+//                            let newPost = NewPeice(dict:post, id: postId, user: currentPost.user)
+//                            self.newPieceArr[updateIndex] = newPost
+//                            DispatchQueue.main.async {
+//                                self.pieceTableView.reloadData()
+//                            }
+//                        }
+//                    case .removed:
+//                        let postId = diff.document.documentID
+//                        if let deleteIndex = self.newPieceArr.firstIndex(where: {$0.id == postId}){
+//                            self.newPieceArr.remove(at: deleteIndex)
+//                            DispatchQueue.main.async {
+//                                self.pieceTableView.reloadData()
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }//end func
+    
+    
+    func getPiece() {
         let ref = Firestore.firestore()
         ref.collection("addPiece").order(by: "createdAt",descending: true).addSnapshotListener { snapshot, error in
             if let error = error {
                 print("DB ERROR Posts",error.localizedDescription)
             }
             if let snapshot = snapshot {
+                print("POST CANGES:",snapshot.documentChanges.count)
                 snapshot.documentChanges.forEach { diff in
-                    let post = diff.document.data()
+                    let postData = diff.document.data()
                     switch diff.type {
                     case .added :
-                        if let userId = post["userId"] as? String {
+                        
+                        if let userId = postData["userId"] as? String {
                             ref.collection("users").document(userId).getDocument { userSnapshot, error in
                                 if let error = error {
                                     print("ERROR user Data",error.localizedDescription)
@@ -47,11 +107,20 @@ class HomeViewController: UIViewController {
                                 if let userSnapshot = userSnapshot,
                                    let userData = userSnapshot.data(){
                                     let user = User(dict:userData)
-                                    let post = NewPeice(dict:post,id:diff.document.documentID,user:user)
-                                    self.newPieceArr.insert(post, at: 0)
-                                    DispatchQueue.main.async {
-                                        self.pieceTableView.reloadData()
+                                    let post = NewPeice(dict:postData,id:diff.document.documentID,user:user)
+                                    self.pieceTableView.beginUpdates()
+                                    if snapshot.documentChanges.count != 1 {
+                                        self.newPieceArr.append(post)
+                                      
+                                        self.pieceTableView.insertRows(at: [IndexPath(row:self.newPieceArr.count - 1,section: 0)],with: .automatic)
+                                    }else {
+                                        self.newPieceArr.insert(post,at:0)
+                                      
+                                        self.pieceTableView.insertRows(at: [IndexPath(row: 0,section: 0)],with: .automatic)
                                     }
+                                  
+                                    self.pieceTableView.endUpdates()
+                                    
                                     
                                 }
                             }
@@ -60,25 +129,30 @@ class HomeViewController: UIViewController {
                         let postId = diff.document.documentID
                         if let currentPost = self.newPieceArr.first(where: {$0.id == postId}),
                            let updateIndex = self.newPieceArr.firstIndex(where: {$0.id == postId}){
-                            let newPost = NewPeice(dict:post, id: postId, user: currentPost.user)
+                            let newPost = NewPeice(dict:postData, id: postId, user: currentPost.user)
                             self.newPieceArr[updateIndex] = newPost
-                            DispatchQueue.main.async {
-                                self.pieceTableView.reloadData()
-                            }
+                         
+                                self.pieceTableView.beginUpdates()
+                                self.pieceTableView.deleteRows(at: [IndexPath(row: updateIndex,section: 0)], with: .left)
+                                self.pieceTableView.insertRows(at: [IndexPath(row: updateIndex,section: 0)],with: .left)
+                                self.pieceTableView.endUpdates()
+                            
                         }
                     case .removed:
                         let postId = diff.document.documentID
                         if let deleteIndex = self.newPieceArr.firstIndex(where: {$0.id == postId}){
                             self.newPieceArr.remove(at: deleteIndex)
-                            DispatchQueue.main.async {
-                                self.pieceTableView.reloadData()
-                            }
+                          
+                                self.pieceTableView.beginUpdates()
+                                self.pieceTableView.deleteRows(at: [IndexPath(row: deleteIndex,section: 0)], with: .automatic)
+                                self.pieceTableView.endUpdates()
+                            
                         }
                     }
                 }
             }
         }
-    }//end func
+    }
     
     @IBAction func handleLogOut(_ sender: Any) {
         
@@ -108,7 +182,19 @@ class HomeViewController: UIViewController {
      
     }
     
-    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredData = []
+        if searchText == "" {
+            filteredData = newPieceArr
+        }else{
+            for fruit in newPieceArr {
+                if fruit.title.lowercased().contains(searchText.lowercased()){
+                    filteredData.append(fruit)
+                }
+            }
+        }
+        self.pieceTableView.reloadData()
+    }
     
     
 }
@@ -116,7 +202,11 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newPieceArr.count
+        if filteredData.count > 0 {
+            return filteredData.count
+        } else {
+            return newPieceArr.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -124,13 +214,16 @@ extension HomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NewPieceCell
         
         
-        
-        return cell.configure(with: newPieceArr[indexPath.row])
+        if filteredData.count > 0 {
+        return cell.configure(with: filteredData[indexPath.row])
+        } else {
+            return cell.configure(with: newPieceArr[indexPath.row])
+        }
     }
     
     
 }
-extension HomeViewController: UITableViewDelegate {
+extension HomeViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.view.frame.height/6
     }
@@ -146,4 +239,6 @@ extension HomeViewController: UITableViewDelegate {
             
         }
     }
+    
+
 }

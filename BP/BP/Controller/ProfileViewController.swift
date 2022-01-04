@@ -144,11 +144,6 @@ class ProfileViewController: UIViewController {
                 let vc = segue.destination as! AddNewPieceViewController
                 vc.selectedNewPiece = selectedNewPiece
                 vc.selectedNewPieceImage = selectedNewPieceImage
-            }else {
-                
-                let vc = segue.destination as! DetailsViewController
-                vc.selectedNewPiece = selectedNewPiece
-                vc.selectedNewPieceImage = selectedNewPieceImage
             }
         }
         
@@ -156,30 +151,7 @@ class ProfileViewController: UIViewController {
     
     
     
-    @objc func handleDelete (_ sender: UIBarButtonItem) {
-        let ref = Firestore.firestore().collection("addPiece")
-        if let selectedNewPiece = selectedNewPiece {
-            Activity.showIndicator(parentView: self.view, childView: activityIndicator)
-            ref.document(selectedNewPiece.id).delete { error in
-                if let error = error {
-                    print("Error in db delete",error)
-                }else {
-                    // Create a reference to the file to delete
-                    let storageRef = Storage.storage().reference(withPath: "addPiece/\(selectedNewPiece.user.id)/\(selectedNewPiece.id)")
-                    // Delete the file
-                    storageRef.delete { error in
-                        if let error = error {
-                            print("Error in storage delete",error)
-                        } else {
-                            self.activityIndicator.stopAnimating()
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                    }
-                    
-                }
-            }
-        }
-    }
+
     
     
     
@@ -214,9 +186,6 @@ extension ProfileViewController: UITableViewDelegate {
         if let currentUser = Auth.auth().currentUser,
            currentUser.uid == newPieceArr[indexPath.row].user.id{
             performSegue(withIdentifier: "toPostVC", sender: self)
-        }else {
-            performSegue(withIdentifier: "toDetailsVC", sender: self)
-            
         }
     }
 

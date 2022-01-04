@@ -49,6 +49,11 @@ class NewPieceCell: UITableViewCell {
         newPieceImageView.loadImageUsingCache(with: addPiece.imageUrl)
        // userNameLabel.text = addPiece.user.name
         //userImageView.loadImageUsingCache(with: addPiece.user.imageUrl)
+        
+            
+            
+            
+        
         return self
     }
     
@@ -58,13 +63,16 @@ class NewPieceCell: UITableViewCell {
         UserPieceImage.loadImageUsingCache(with: addPiece.imageUrl)
        // userNameLabel.text = addPiece.user.name
         //userImageView.loadImageUsingCache(with: addPiece.user.imageUrl)
+        
+            
+        
         return self
     }
     
     override func prepareForReuse() {
-        //userImageView.image = nil
-        newPieceImageView.image = nil
-        UserPieceImage.image = nil
+        userImageView?.image = nil
+        newPieceImageView?.image = nil
+        UserPieceImage?.image = nil
     }
 
 }

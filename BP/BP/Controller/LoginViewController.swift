@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!{
         didSet{
-            loginButton.setTitle("Password".localized, for: .normal)
+            loginButton.setTitle("Login".localized, for: .normal)
         }
     }
     @IBOutlet weak var registerButton: UIButton!{
