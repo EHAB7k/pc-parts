@@ -9,6 +9,11 @@ import UIKit
 
 class DetailsViewController: UIViewController {
     
+    @IBOutlet weak var pieceInformation: UINavigationItem!{
+        didSet{
+            pieceInformation.title = "Piece information".localized
+        }
+    }
     var selectedNewPiece:NewPeice?
     var selectedNewPieceImage:UIImage?
     

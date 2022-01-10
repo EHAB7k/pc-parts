@@ -43,6 +43,7 @@ class LoginViewController: UIViewController {
             registerButton.setTitle("Register".localized, for: .normal)
         }
     }
+    @IBOutlet weak var errorLable: UILabel!
     
     
     
@@ -61,12 +62,25 @@ class LoginViewController: UIViewController {
 
         passwordTextField.rightView = passwordHideOrShow
         passwordTextField.rightViewMode = .always
+        
+        passwordTextField.delegate = self
+        emailTextField.delegate = self
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.singleTap(sender:)))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(singleTapGestureRecognizer)
 
 
         
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func singleTap(sender: UITapGestureRecognizer) {
+        self.passwordTextField.resignFirstResponder()
+        self.emailTextField.resignFirstResponder()
     }
     
 
@@ -91,6 +105,19 @@ class LoginViewController: UIViewController {
            let password = passwordTextField.text {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                if error == nil{
+                    print("login susscufly")
+                }else{
+//                    print(error?.localizedDescription)
+                    Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
+                   // self.errorLable.text = error?.localizedDescription
+                    let alert = UIAlertController(title: "Error".localized, message: "", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "ok", style: .default, handler: {(action: UIAlertAction) in
+                       
+                        
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
                 if let _ = authResult {
                     if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationController") as? UITabBarController {
                         vc.modalPresentationStyle = .fullScreen
@@ -113,5 +140,18 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+}
+
+extension LoginViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+
+        emailTextField.resignFirstResponder()
+       passwordTextField.resignFirstResponder()
+
+        print("retern button preessd ")
+        return true
+    }
 
 }

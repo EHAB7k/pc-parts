@@ -7,7 +7,15 @@
 
 import UIKit
 import Firebase
-class AddNewPieceViewController: UIViewController {
+import SwiftUI
+class AddNewPieceViewController: UIViewController{
+//    let scrollView = UIScrollView()
+//        let contentView = UIView()
+    @IBOutlet weak var ScrolInstack: UIStackView!
+    
+   
+    
+    
     
     @IBOutlet weak var thePartNameLabel: UILabel!{
         didSet{
@@ -65,10 +73,10 @@ class AddNewPieceViewController: UIViewController {
     
     let activityIndicator = UIActivityIndicatorView()
     
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         // Do any additional setup after loading the view.
         
         if let selectedNewPiece = selectedNewPiece,
@@ -88,6 +96,10 @@ class AddNewPieceViewController: UIViewController {
             
         }
         
+        addTitleTextField.delegate = self
+        addDescriptionTextField.delegate = self
+        phoneNumber.delegate = self
+        
 
         
             
@@ -96,7 +108,101 @@ class AddNewPieceViewController: UIViewController {
         productInformation.layer.masksToBounds = true
         productInformation.layer.cornerRadius = 7
         
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.singleTap(sender:)))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(singleTapGestureRecognizer)
+        
+
+
+
+  
+//        setupScrollView()
+//        setupViews()
+//        scrollView.contentSize = CGSize(width: view.frame.size.width, height: 900)
+//
+//        scrollView.showsVerticalScrollIndicator = false
+//        scrollView.showsHorizontalScrollIndicator = false
+
     }
+    
+    @objc func singleTap(sender: UITapGestureRecognizer) {
+        self.productInformation.resignFirstResponder()
+        self.addTitleTextField.resignFirstResponder()
+        self.phoneNumber.resignFirstResponder()
+        self.addDescriptionTextField.resignFirstResponder()
+    }
+    
+    
+//    func setupScrollView() {
+//        scrollView.translatesAutoresizingMaskIntoConstraints = false
+//               contentView.translatesAutoresizingMaskIntoConstraints = false
+//               view.addSubview(scrollView)
+//               scrollView.addSubview(contentView)
+//               scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//               scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+//               scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//               scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+//               contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+//               contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+//               contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+//               contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+//        }
+    
+    
+//    func setupViews(){
+//            contentView.addSubview(ScrolInstack)
+//
+//        ScrolInstack.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+//        ScrolInstack.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+//        ScrolInstack.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 3/4).isActive = true
+//    }
+       
+
+ 
+
+
+
+//    override func viewDidLayoutSubviews() {
+//
+//        let scrollView = UIScrollView(frame: CGRect(x:10, y:10 , width: view.frame.size.width, height: view.frame.size.height - 20))
+//
+////
+//
+//
+//
+//
+////        let centerOffsetX = (scrollView.contentSize.width - scrollView.frame.size.width) / 2
+////        let centerOffsetY = (scrollView.contentSize.height - scrollView.frame.size.height) / 2
+////        let centerPoint = CGPoint(x: centerOffsetX, y: centerOffsetY)
+////        scrollView.setContentOffset(centerPoint, animated: true)
+//
+//
+////        NSLayoutConstraint.activate([
+////           scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+////           scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
+////           scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+////           scrollView.leftAnchor.constraint(equalTo: view.leftAnchor)
+////         ])
+//
+//        view.addSubview(scrollView)
+//
+//        scrollView.addSubview(ScrolInstack)
+//
+//
+//
+//        scrollView.contentSize = CGSize(width: view.frame.size.width, height: 1200)
+//        scrollView.showsVerticalScrollIndicator = false
+//        scrollView.showsHorizontalScrollIndicator = false
+//
+//    }
+    
+    @objc func tapDone(sender: Any) {
+          self.view.endEditing(true)
+      }
+    
+
     
 
         
@@ -247,3 +353,16 @@ extension AddNewPieceViewController: UIImagePickerControllerDelegate, UINavigati
     }
     
 }
+extension AddNewPieceViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        addTitleTextField.resignFirstResponder()
+        phoneNumber.resignFirstResponder()
+        addDescriptionTextField.resignFirstResponder()
+
+           self.view.endEditing(true)
+        print("retern button preessd ")
+        return true
+    }
+
+}
+

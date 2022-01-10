@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 let navigationController = storyboard.instantiateViewController(withIdentifier: "HomeNavigationController") as! UITabBarController
                 window.rootViewController = navigationController
                 window.makeKeyAndVisible()
+                
             }
         }
     }

@@ -9,6 +9,9 @@ import UIKit
 import Firebase
 class RegisterViewController: UIViewController {
     
+    @IBOutlet weak var ScrolInstack: UIStackView!
+    
+    
     @IBOutlet weak var RegisterLabel: UILabel!{
         didSet{
             RegisterLabel.text = "Register".localized
@@ -89,6 +92,29 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         imagePickerController.delegate = self
         // Do any additional setup after loading the view.
+        nameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        comfirmPasswordTextField.delegate = self
+        
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.singleTap(sender:)))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(singleTapGestureRecognizer)
+    }
+    @objc func singleTap(sender: UITapGestureRecognizer) {
+        self.nameTextField.resignFirstResponder()
+        self.emailTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
+        self.comfirmPasswordTextField.resignFirstResponder()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        let scrollView = UIScrollView(frame: CGRect(x: 10, y: 10, width: view.frame.size.width - 20, height: view.frame.size.height - 20))
+        view.addSubview(scrollView)
+        scrollView.addSubview(ScrolInstack)
+        scrollView.contentSize = CGSize(width: view.frame.size.width, height: 900)
     }
     
     @IBAction func handlRegister(_ sender: Any) {
@@ -191,4 +217,17 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+}
+
+extension RegisterViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+        nameTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+       passwordTextField.resignFirstResponder()
+        comfirmPasswordTextField.resignFirstResponder()
+        print("retern button preessd ")
+        return true
+    }
+    
 }

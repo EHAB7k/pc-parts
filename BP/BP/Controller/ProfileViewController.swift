@@ -9,6 +9,14 @@ import UIKit
 import Firebase
 import Foundation
 class ProfileViewController: UIViewController {
+    
+    @IBOutlet weak var profileTabBar: UINavigationItem!{
+        didSet{
+            profileTabBar.title = "Profile".localized
+        }
+    }
+    
+    
     var selectedNewPiece:NewPeice?
     var newPieceArr = [NewPeice]()
     var userImage = ""
@@ -109,7 +117,7 @@ class ProfileViewController: UIViewController {
                     return
                 }
                 
-                self.userImage = (doucument?.data()?["imageUrl"] as? String)!
+                self.userImage = (doucument?.data()?["imageUrl"] as? String ?? "")
                 self.userNameLabel.text = doucument?.data()?["name"] as? String
                 // self.userBioLabel.text = doucument?.data()?["bio"] as? String
                 

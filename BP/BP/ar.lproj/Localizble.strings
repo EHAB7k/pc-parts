@@ -21,3 +21,11 @@
 "Add" = "اضافة";
 "Update" = "تحديث";
 "ChangeLanguagh" = "تغيير اللغة";
+"Language" = "اللغة";
+"Logout" = "تسجيل الخروج";
+"Piece" = "القطع";
+"Profile" = "الملف الشخصي";
+"AddPiece" = "اضافة قطعة";
+"Piece information" = "معلومات القطعة";
+"Error" = "لديك مشكلة في تسجيل الدخول";
+"Done" = "تم";

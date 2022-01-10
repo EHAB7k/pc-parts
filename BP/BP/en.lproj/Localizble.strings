@@ -21,3 +21,12 @@
 "Add" = "Add";
 "Update" = "Update";
 "ChangeLanguagh" = "ChangeLanguagh";
+"Language" = "Language";
+"Logout" = "Logout";
+"Piece" = "Piece";
+"Profile" = "Profile";
+"AddPiece" = "AddPiece";
+"Piece information" = "piece information";
+
+"Error" = "You are having a problem logging in";
+"Done" = "Done";

@@ -15,9 +15,6 @@
 		FE0498172775E97000A7CB6E /* BPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0498162775E97000A7CB6E /* BPUITests.swift */; };
 		FE0498192775E97000A7CB6E /* BPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0498182775E97000A7CB6E /* BPUITestsLaunchTests.swift */; };
 		FE0498262775E9FE00A7CB6E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE0498252775E9FE00A7CB6E /* GoogleService-Info.plist */; };
-		FE0498292775EA8500A7CB6E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FE0498282775EA8500A7CB6E /* FirebaseAuth */; };
-		FE04982B2775EA8500A7CB6E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FE04982A2775EA8500A7CB6E /* FirebaseFirestore */; };
-		FE04982D2775EA8500A7CB6E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FE04982C2775EA8500A7CB6E /* FirebaseStorage */; };
 		FE0498322775F08800A7CB6E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0498312775F08800A7CB6E /* LoginViewController.swift */; };
 		FE0498342775F0A400A7CB6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0498332775F0A400A7CB6E /* HomeViewController.swift */; };
 		FE0498362775F18900A7CB6E /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0498352775F18900A7CB6E /* LandingViewController.swift */; };
@@ -25,6 +22,11 @@
 		FE11D7EF2781998E0016D5ED /* Localizble.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11D7EE2781998E0016D5ED /* Localizble.swift */; };
 		FE11D7F527819E3C0016D5ED /* Localizble.strings in Resources */ = {isa = PBXBuildFile; fileRef = FE11D7F727819E3C0016D5ED /* Localizble.strings */; };
 		FE5F8F8E277A4ADC0091DB5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE5F8F8D277A4ADC0091DB5E /* Main.storyboard */; };
+		FE7DEA9D278C154F0091A5A5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FE7DEA9C278C154F0091A5A5 /* FirebaseAuth */; };
+		FE7DEA9F278C154F0091A5A5 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FE7DEA9E278C154F0091A5A5 /* FirebaseFirestore */; };
+		FE7DEAA1278C154F0091A5A5 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FE7DEAA0278C154F0091A5A5 /* FirebaseStorage */; };
+		FE7DEAA4278C16150091A5A5 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FE7DEAA3278C16150091A5A5 /* IQKeyboardManagerSwift */; };
+		FE95DFFF278B03C600E78F72 /* TextViewDissmiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95DFFE278B03C600E78F72 /* TextViewDissmiss.swift */; };
 		FE996CB12784353B009D50C0 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE996CB02784353B009D50C0 /* SettingsModel.swift */; };
 		FE996CB32784489F009D50C0 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE996CB22784489F009D50C0 /* LanguageViewController.swift */; };
 		FEA395E42775FDF8002BF4FC /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA395E32775FDF8002BF4FC /* ImageView.swift */; };
@@ -78,6 +80,7 @@
 		FE11D7F627819E3C0016D5ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizble.strings; sourceTree = "<group>"; };
 		FE11D7F827819E410016D5ED /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizble.strings; sourceTree = "<group>"; };
 		FE5F8F8D277A4ADC0091DB5E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		FE95DFFE278B03C600E78F72 /* TextViewDissmiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewDissmiss.swift; sourceTree = "<group>"; };
 		FE996CB02784353B009D50C0 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		FE996CB22784489F009D50C0 /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		FEA395E32775FDF8002BF4FC /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
@@ -96,9 +99,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE0498292775EA8500A7CB6E /* FirebaseAuth in Frameworks */,
-				FE04982B2775EA8500A7CB6E /* FirebaseFirestore in Frameworks */,
-				FE04982D2775EA8500A7CB6E /* FirebaseStorage in Frameworks */,
+				FE7DEA9D278C154F0091A5A5 /* FirebaseAuth in Frameworks */,
+				FE7DEAA4278C16150091A5A5 /* IQKeyboardManagerSwift in Frameworks */,
+				FE7DEA9F278C154F0091A5A5 /* FirebaseFirestore in Frameworks */,
+				FE7DEAA1278C154F0091A5A5 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +200,7 @@
 				FEA395E32775FDF8002BF4FC /* ImageView.swift */,
 				FEA395E62775FE6E002BF4FC /* Activity.swift */,
 				FE11D7EE2781998E0016D5ED /* Localizble.swift */,
+				FE95DFFE278B03C600E78F72 /* TextViewDissmiss.swift */,
 			);
 			path = Utill;
 			sourceTree = "<group>";
@@ -236,9 +241,10 @@
 			);
 			name = BP;
 			packageProductDependencies = (
-				FE0498282775EA8500A7CB6E /* FirebaseAuth */,
-				FE04982A2775EA8500A7CB6E /* FirebaseFirestore */,
-				FE04982C2775EA8500A7CB6E /* FirebaseStorage */,
+				FE7DEA9C278C154F0091A5A5 /* FirebaseAuth */,
+				FE7DEA9E278C154F0091A5A5 /* FirebaseFirestore */,
+				FE7DEAA0278C154F0091A5A5 /* FirebaseStorage */,
+				FE7DEAA3278C16150091A5A5 /* IQKeyboardManagerSwift */,
 			);
 			productName = BP;
 			productReference = FE0497F22775E96C00A7CB6E /* BP.app */;
@@ -314,7 +320,8 @@
 			);
 			mainGroup = FE0497E92775E96C00A7CB6E;
 			packageReferences = (
-				FE0498272775EA8500A7CB6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				FE7DEA9B278C154F0091A5A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				FE7DEAA2278C16150091A5A5 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = FE0497F32775E96C00A7CB6E /* Products */;
 			projectDirPath = "";
@@ -368,6 +375,7 @@
 				FE0497F62775E96C00A7CB6E /* AppDelegate.swift in Sources */,
 				FE0497F82775E96C00A7CB6E /* SceneDelegate.swift in Sources */,
 				FEC9EE442777A3E700851DAE /* ProfileViewController.swift in Sources */,
+				FE95DFFF278B03C600E78F72 /* TextViewDissmiss.swift in Sources */,
 				FE0498382775FA1300A7CB6E /* RegisterViewController.swift in Sources */,
 				FE0498322775F08800A7CB6E /* LoginViewController.swift in Sources */,
 				FED940C5278425F500AE65DF /* SettingsViewController.swift in Sources */,
@@ -489,7 +497,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -545,7 +553,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -570,6 +578,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -598,6 +607,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -749,31 +759,44 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FE0498272775EA8500A7CB6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		FE7DEA9B278C154F0091A5A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
+				branch = master;
+				kind = branch;
+			};
+		};
+		FE7DEAA2278C16150091A5A5 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FE0498282775EA8500A7CB6E /* FirebaseAuth */ = {
+		FE7DEA9C278C154F0091A5A5 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FE0498272775EA8500A7CB6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = FE7DEA9B278C154F0091A5A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		FE04982A2775EA8500A7CB6E /* FirebaseFirestore */ = {
+		FE7DEA9E278C154F0091A5A5 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FE0498272775EA8500A7CB6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = FE7DEA9B278C154F0091A5A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		FE04982C2775EA8500A7CB6E /* FirebaseStorage */ = {
+		FE7DEAA0278C154F0091A5A5 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FE0498272775EA8500A7CB6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = FE7DEA9B278C154F0091A5A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		FE7DEAA3278C16150091A5A5 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FE7DEAA2278C16150091A5A5 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

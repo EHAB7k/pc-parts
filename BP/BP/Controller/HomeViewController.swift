@@ -7,7 +7,7 @@
 
 import UIKit
 import Firebase
-class HomeViewController: UIViewController,UISearchBarDelegate  {
+class HomeViewController: UIViewController,UISearchBarDelegate{
     var newPieceArr = [NewPeice]()
     var selectedNewPieceModel:NewPeice?
     var selectedNewPieceImage:UIImage?
@@ -17,7 +17,12 @@ class HomeViewController: UIViewController,UISearchBarDelegate  {
     @IBOutlet weak var searchBar: UISearchBar!
     var filteredData:[NewPeice]!
         
-
+    @IBOutlet weak var pieceTabBar: UINavigationItem!{
+        didSet{
+            pieceTabBar.title = "Piece".localized
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,63 +32,33 @@ class HomeViewController: UIViewController,UISearchBarDelegate  {
         searchBar.delegate = self
        
         
+           
+            self.searchBar.endEditing(true)
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.singleTap(sender:)))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(singleTapGestureRecognizer)
+        
+        
         
         filteredData = newPieceArr
         getPiece()
+        
+        
+
+
+       
     }
-//    func getPosts() {
-//        let ref = Firestore.firestore()
-//        ref.collection("addPiece").order(by: "createdAt",descending: true).addSnapshotListener { snapshot, error in
-//            if let error = error {
-//                print("DB ERROR Posts",error.localizedDescription)
-//            }
-//            if let snapshot = snapshot {
-//                snapshot.documentChanges.forEach { diff in
-//                    let post = diff.document.data()
-//                    switch diff.type {
-//                    case .added :
-//                        if let userId = post["userId"] as? String {
-//                            ref.collection("users").document(userId).getDocument { userSnapshot, error in
-//                                if let error = error {
-//                                    print("ERROR user Data",error.localizedDescription)
-//
-//                                }
-//                                if let userSnapshot = userSnapshot,
-//                                   let userData = userSnapshot.data(){
-//                                    let user = User(dict:userData)
-//                                    let post = NewPeice(dict:post,id:diff.document.documentID,user:user)
-//                                    self.newPieceArr.insert(post, at: 0)
-//                                    DispatchQueue.main.async {
-//                                        self.pieceTableView.reloadData()
-//                                    }
-//
-//                                }
-//                            }
-//                        }
-//                    case .modified:
-//                        let postId = diff.document.documentID
-//                        if let currentPost = self.newPieceArr.first(where: {$0.id == postId}),
-//                           let updateIndex = self.newPieceArr.firstIndex(where: {$0.id == postId}){
-//                            let newPost = NewPeice(dict:post, id: postId, user: currentPost.user)
-//                            self.newPieceArr[updateIndex] = newPost
-//                            DispatchQueue.main.async {
-//                                self.pieceTableView.reloadData()
-//                            }
-//                        }
-//                    case .removed:
-//                        let postId = diff.document.documentID
-//                        if let deleteIndex = self.newPieceArr.firstIndex(where: {$0.id == postId}){
-//                            self.newPieceArr.remove(at: deleteIndex)
-//                            DispatchQueue.main.async {
-//                                self.pieceTableView.reloadData()
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }//end func
     
+    func touch() {
+        
+        self.view.endEditing(true)
+    }
+
+    @objc func singleTap(sender: UITapGestureRecognizer) {
+        self.searchBar.resignFirstResponder()
+    }
     
     func getPiece() {
         let ref = Firestore.firestore()
@@ -97,12 +72,12 @@ class HomeViewController: UIViewController,UISearchBarDelegate  {
                     let postData = diff.document.data()
                     switch diff.type {
                     case .added :
-                        
+
                         if let userId = postData["userId"] as? String {
                             ref.collection("users").document(userId).getDocument { userSnapshot, error in
                                 if let error = error {
                                     print("ERROR user Data",error.localizedDescription)
-                                    
+
                                 }
                                 if let userSnapshot = userSnapshot,
                                    let userData = userSnapshot.data(){
@@ -111,17 +86,17 @@ class HomeViewController: UIViewController,UISearchBarDelegate  {
                                     self.pieceTableView.beginUpdates()
                                     if snapshot.documentChanges.count != 1 {
                                         self.newPieceArr.append(post)
-                                      
+
                                         self.pieceTableView.insertRows(at: [IndexPath(row:self.newPieceArr.count - 1,section: 0)],with: .automatic)
                                     }else {
                                         self.newPieceArr.insert(post,at:0)
-                                      
+
                                         self.pieceTableView.insertRows(at: [IndexPath(row: 0,section: 0)],with: .automatic)
                                     }
-                                  
+
                                     self.pieceTableView.endUpdates()
-                                    
-                                    
+
+
                                 }
                             }
                         }
@@ -131,22 +106,22 @@ class HomeViewController: UIViewController,UISearchBarDelegate  {
                            let updateIndex = self.newPieceArr.firstIndex(where: {$0.id == postId}){
                             let newPost = NewPeice(dict:postData, id: postId, user: currentPost.user)
                             self.newPieceArr[updateIndex] = newPost
-                         
+
                                 self.pieceTableView.beginUpdates()
                                 self.pieceTableView.deleteRows(at: [IndexPath(row: updateIndex,section: 0)], with: .left)
                                 self.pieceTableView.insertRows(at: [IndexPath(row: updateIndex,section: 0)],with: .left)
                                 self.pieceTableView.endUpdates()
-                            
+
                         }
                     case .removed:
                         let postId = diff.document.documentID
                         if let deleteIndex = self.newPieceArr.firstIndex(where: {$0.id == postId}){
                             self.newPieceArr.remove(at: deleteIndex)
-                          
+
                                 self.pieceTableView.beginUpdates()
                                 self.pieceTableView.deleteRows(at: [IndexPath(row: deleteIndex,section: 0)], with: .automatic)
                                 self.pieceTableView.endUpdates()
-                            
+
                         }
                     }
                 }
@@ -154,18 +129,7 @@ class HomeViewController: UIViewController,UISearchBarDelegate  {
         }
     }
     
-    @IBAction func handleLogOut(_ sender: Any) {
-        
-        do {
-            try Auth.auth().signOut()
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LandingNavigationController") as? UINavigationController {
-                vc.modalPresentationStyle = .fullScreen
-                self.present(vc, animated: true, completion: nil)
-            }
-        } catch  {
-            print("ERROR in signout",error.localizedDescription)
-        }
-    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "toPostVC" {
@@ -242,3 +206,7 @@ extension HomeViewController: UITableViewDelegate{
     
 
 }
+
+
+
+

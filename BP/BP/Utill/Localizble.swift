@@ -11,3 +11,5 @@ extension String {
         return NSLocalizedString(self, tableName: "Localizble", bundle: .main, value: self, comment: self)
     }
 }
+
+
