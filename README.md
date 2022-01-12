@@ -3,7 +3,8 @@
 
 ## Description
 
-- A simple a app program that support to buy pieces for the computer built and Supports Arabic and English
+
+- An app for users to sell there product.
 
 ## Demo
 
@@ -12,15 +13,16 @@
 
 ## user Stories 
 
-- as a user I can register
-- as a user I can update
-- as a user I can delete
-- as a user I can search in app
+- user can make register & loge in
+- user can send New "piece to sell".
+- user can delete his "work or update it".
+- user can see all the other pieces
+- as a user I can search
 
 ## Framework
 - UIKit
 - Firebase
-- AVFoundation
+- Foundation
 - IQKeyboardManagerSwift
 ## ERD
 
