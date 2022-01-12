@@ -134,30 +134,17 @@ class AddNewPieceViewController: UIViewController{
         self.addDescriptionTextField.resignFirstResponder()
     }
     
-    
-//    func setupScrollView() {
-//        scrollView.translatesAutoresizingMaskIntoConstraints = false
-//               contentView.translatesAutoresizingMaskIntoConstraints = false
-//               view.addSubview(scrollView)
-//               scrollView.addSubview(contentView)
-//               scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//               scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-//               scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-//               scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-//               contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-//               contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-//               contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-//               contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-//        }
+    func deleteText() {
+        productInformation.text = ""
+        addTitleTextField.text = ""
+        phoneNumber.text = ""
+        addDescriptionTextField.text = ""
+        addNewPieceImageView.image = UIImage(systemName: "photo.artframe")
+}
+
     
     
-//    func setupViews(){
-//            contentView.addSubview(ScrolInstack)
-//
-//        ScrolInstack.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-//        ScrolInstack.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-//        ScrolInstack.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 3/4).isActive = true
-//    }
+
        
 
  
@@ -290,6 +277,7 @@ class AddNewPieceViewController: UIViewController{
                             }
                             Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
                             self.navigationController?.popViewController(animated: true)
+                            self.deleteText()
                         }
                     }
                 }

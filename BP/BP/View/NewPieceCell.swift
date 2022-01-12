@@ -45,7 +45,7 @@ class NewPieceCell: UITableViewCell {
     }
     func configure(with addPiece:NewPeice) -> UITableViewCell {
         newPieceTitleLabel.text = addPiece.title
-        newPieceDescriptionLabel.text = addPiece.description
+        newPieceDescriptionLabel.text = addPiece.description  + " SAR"
         newPieceImageView.loadImageUsingCache(with: addPiece.imageUrl)
        // userNameLabel.text = addPiece.user.name
         //userImageView.loadImageUsingCache(with: addPiece.user.imageUrl)
@@ -59,7 +59,7 @@ class NewPieceCell: UITableViewCell {
     
     func userConfigure(with addPiece:NewPeice) -> UITableViewCell {
         userPieceTitleLabel.text = addPiece.title
-        userPiecePriceLabel.text = addPiece.description
+        userPiecePriceLabel.text = addPiece.description + " SAR"
         UserPieceImage.loadImageUsingCache(with: addPiece.imageUrl)
        // userNameLabel.text = addPiece.user.name
         //userImageView.loadImageUsingCache(with: addPiece.user.imageUrl)

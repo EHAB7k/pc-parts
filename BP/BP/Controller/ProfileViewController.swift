@@ -206,7 +206,7 @@ extension ProfileViewController: UITableViewDelegate {
                 if let error = error {
                     print("Error in db delete",error)
                 } else {
-                    if self.newPieceArr.count > 0 {
+                    if self.newPieceArr.count < 0 {
                         let storageRef = Storage.storage().reference(withPath: "addPiece/\(self.newPieceArr[indexPath.row].user.id)/\(self.newPieceArr[indexPath.row].id)")
                         storageRef.delete { error in
                             if let error = error {
