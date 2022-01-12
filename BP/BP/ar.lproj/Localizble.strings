@@ -12,7 +12,8 @@
 "Login" = "تسجيل الدخول";
 "Sign In" = "تسجيل الدخول";
 "Hi there! Nice to see you again" = "أهلا! جميل ان اراك مرة اخرى";
-"Register" = "انشاء مستخدم جديد";
+"do you want to create a" = "هل تريد انشاء";
+"new account?" = "حساب جديد؟";
 "Have an accunt?" = "هل لديك حساب؟";
 "The piece name" = "اسم القطعة";
 "The price of the piece" = "سعر القطعة";

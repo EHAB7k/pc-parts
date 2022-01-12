@@ -3,12 +3,12 @@
 
 ## Description
 
-- A simple a app program that helps to buy pieces for the computer built with swift 5 utilizing Internationalization and Localization.
+- A simple a app program that support to buy pieces for the computer built
 
 ## Demo
 
-![](light.png)
-![](dark.png)
+![](dark.gif)
+![](light.gif)
 
 ## user Stories 
 

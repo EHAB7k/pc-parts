@@ -38,12 +38,17 @@ class LoginViewController: UIViewController {
             loginButton.setTitle("Login".localized, for: .normal)
         }
     }
-    @IBOutlet weak var registerButton: UIButton!{
+    @IBOutlet weak var registerrButton: UIButton!{
         didSet{
-            registerButton.setTitle("Register".localized, for: .normal)
+            registerrButton.setTitle("new account?".localized, for: .normal)
         }
     }
-    @IBOutlet weak var errorLable: UILabel!
+  
+    @IBOutlet weak var askYouWantNewuser: UILabel!{
+        didSet{
+            askYouWantNewuser.text = "do you want to create a".localized
+        }
+    }
     
     
     
