@@ -34,6 +34,7 @@ class HomeViewController: UIViewController,UISearchBarDelegate{
         
            
             self.searchBar.endEditing(true)
+        
         let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.singleTap(sender:)))
         singleTapGestureRecognizer.numberOfTapsRequired = 1
         singleTapGestureRecognizer.isEnabled = true

@@ -11,8 +11,10 @@
 "Retype the password" = "Retype the password";
 "Login" = "Login";
 "Sign In" = "Sign In";
+
 "Hi there! Nice to see you again" = "Hi there! Nice to see you again";
 "do you want to create a" = "do you want to create a";
+"Register" = "Register";
 "new account?" = "new account?";
 "Have an accunt?" = "Have an accunt?";
 "The piece name" = "The piece name";
