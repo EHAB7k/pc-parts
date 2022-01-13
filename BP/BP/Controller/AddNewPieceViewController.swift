@@ -277,7 +277,13 @@ class AddNewPieceViewController: UIViewController{
                             }
                             Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
                             self.navigationController?.popViewController(animated: true)
+                            let alert = UIAlertController(title: "Added succeesfully".localized, message: "", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Done".localized, style: .default, handler: {(action: UIAlertAction) in
+                               
+                                
+                            }))
                             self.deleteText()
+                            self.present(alert, animated: true, completion: nil)
                         }
                     }
                 }
