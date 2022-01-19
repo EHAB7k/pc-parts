@@ -197,7 +197,15 @@ class AddNewPieceViewController: UIViewController{
     @objc func handleDelete (_ sender: UIBarButtonItem) {
         let ref = Firestore.firestore().collection("addPiece")
         if let selectedNewPiece = selectedNewPiece {
-            Activity.showIndicator(parentView: self.view, childView: activityIndicator)
+            //Activity.showIndicator(parentView: self.view, childView: activityIndicator)
+            let alert = UIAlertController(title: "The deletion was successful".localized, message: "", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Done".localized, style: .default, handler: {(action: UIAlertAction) in
+                self.navigationController?.popViewController(animated: true)
+               
+                
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
             ref.document(selectedNewPiece.id).delete { error in
                 if let error = error {
                     print("Error in db delete",error)
@@ -211,6 +219,7 @@ class AddNewPieceViewController: UIViewController{
                         } else {
                             self.activityIndicator.stopAnimating()
                             self.navigationController?.popViewController(animated: true)
+                            
                         }
                     }
                     

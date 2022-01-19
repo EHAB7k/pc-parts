@@ -194,9 +194,7 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
         let galaryAction = UIAlertAction(title: "photo Album", style: .default) { Action in
             self.getImage(from: .photoLibrary)
         }
-        let dismissAction = UIAlertAction(title: "Cancle", style: .destructive) { Action in
-            self.dismiss(animated: true, completion: nil)
-        }
+        let dismissAction = UIAlertAction(title: "Cancle", style: .destructive, handler: nil)
         alert.addAction(cameraAction)
         alert.addAction(galaryAction)
         alert.addAction(dismissAction)
