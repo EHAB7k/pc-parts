@@ -152,9 +152,9 @@ class HomeViewController: UIViewController,UISearchBarDelegate{
         if searchText == "" {
             filteredData = newPieceArr
         }else{
-            for fruit in newPieceArr {
-                if fruit.title.lowercased().contains(searchText.lowercased()){
-                    filteredData.append(fruit)
+            for piece in newPieceArr {
+                if piece.title.lowercased().contains(searchText.lowercased()){
+                    filteredData.append(piece)
                 }
             }
         }
